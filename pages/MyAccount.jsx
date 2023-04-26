@@ -9,6 +9,8 @@ const MyAccount = (props) => {
         setToggle(!toggle)
     }
 
+    
+
     return(
         <div>
             <button onClick={handleClick}> My Account</button>

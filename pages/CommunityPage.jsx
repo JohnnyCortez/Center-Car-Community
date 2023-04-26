@@ -1,7 +1,9 @@
 
 const Community = () => {
     return(
-        <div>Community</div>
+        <div>
+            <h3>Community</h3>
+        </div>
     )
 }
 

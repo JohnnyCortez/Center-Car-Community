@@ -3,7 +3,8 @@ import { useState } from "react";
 
 
 const MakePost = (props) => {
-    const [ownerID, setOwnerID] = useState(null);
+    console.log(props.user)
+    const [ownerID, setOwnerID] = useState(props.user);
     const [title, setTitle] = useState(null);
     const [make, setMake] = useState(null);
     const [model, setModel] = useState(null);
@@ -18,7 +19,7 @@ const MakePost = (props) => {
   
     const createPost = async () => {
     await supabase
-    .from("UserTable")
+    .from("PostTable")
     .insert({
       ownerID: ownerID,
       title: title,
@@ -36,90 +37,89 @@ const MakePost = (props) => {
 };
 
 function handleClick() {
-  createAccount();
+  createPost();
 }
 
 return (
   <div>
-    <h4> Create Post</h4>
     <br />
     <label>Title</label>
     <input
       type="text"
-      id="user"
-      name="user"
+      id="title"
+      name="title"
       onChange={(e) => setTitle(e.target.value)}
     />
 
 <label>Make</label>
     <input
       type="text"
-      id="user"
-      name="user"
+      id="make"
+      name="make"
       onChange={(e) => setMake(e.target.value)}
     />
 
     <label>Model</label>
     <input
       type="text"
-      id="user"
-      name="user"
+      id="model"
+      name="model"
       onChange={(e) => setModel(e.target.value)}
     />
 
 <label>Year</label>
     <input
       type="text"
-      id="user"
-      name="user"
+      id="year"
+      name="year"
       onChange={(e) => setYear(e.target.value)}
     />
 
 <label>Short Description</label>
     <input
       type="text"
-      id="user"
-      name="user"
+      id="shortDescr"
+      name="shortDescr"
       onChange={(e) => setShortDescription(e.target.value)}
     />
 
-<label>Desription</label>
+<label>Description</label>
     <input
       type="text"
-      id="user"
-      name="user"
+      id="description"
+      name="description"
       onChange={(e) => setDescription(e.target.value)}
     />
 
 <label>Power</label>
     <input
       type="text"
-      id="user"
-      name="user"
+      id="power"
+      name="power"
       onChange={(e) => setPower(e.target.value)}
     />
 
 <label>Specs</label>
     <input
       type="text"
-      id="user"
-      name="user"
+      id="specs"
+      name="specs"
       onChange={(e) => setSpecs(e.target.value)}
     />
 
     <label>Modifications</label>
     <input
       type="text"
-      id="pass"
-      name="pass"
+      id="modifications"
+      name="modifications"
       onChange={(e) => setModification(e.target.value)}
     />
 
 <label>Picture</label>
     <input
       type="text"
-      id="user"
-      name="user"
+      id="picture"
+      name="picture"
       onChange={(e) => setPicture(e.target.value)}
     />
 

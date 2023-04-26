@@ -36,7 +36,6 @@ const Register = () => {
       <button onClick={handleToggle}>Register</button>
       {toggle ? (
         <div>
-          <h4> Create New Account</h4>
           <br />
           <label>Username:</label>
           <input

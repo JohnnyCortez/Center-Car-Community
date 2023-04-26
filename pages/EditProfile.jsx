@@ -3,6 +3,12 @@ import { useState } from "react";
 
 
 const EditProfile = (props) => {
+    const [toggle, setToggle] = useState(false)
+    const handle = () => {
+        setToggle(!toggle)
+    }
+
+
 
     console.log(props.user.user.userName)
 
@@ -35,8 +41,8 @@ const EditProfile = (props) => {
 
   return (
     <div>
-      <h4> Edit Profile </h4>
-      <br />
+      <button onClick={handle}>Edit Profile</button>
+      {toggle ? <div><br />
       <label>Username:</label>
       <input
         type="text"
@@ -91,7 +97,8 @@ const EditProfile = (props) => {
       />
 
       <button onClick={handleClick}>Submit</button>
-      <br />
+      <br /></div> : ""}
+      
     </div>
   );
 };

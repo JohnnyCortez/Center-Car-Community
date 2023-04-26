@@ -1,7 +1,11 @@
+import MakePost from "../components/MakePost"
 
-const Home = () => {
+
+const Home = (props) => {
     return(
-        <div>Home</div>
+        <div>Home
+            <MakePost user={props.user.id}/>
+        </div>
     )
 }
 

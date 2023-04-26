@@ -1,19 +1,19 @@
 import { supabase } from "../src/client";
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
 
 
-const EditProfile = () => {
-const local = useLocation();
-const { account } = local.state;
-  const [user, setUser] = useState(null);
-  const [pass, setPass] = useState(null);
-  const [Name, setName] = useState(null);
-  const [location, setLocation] = useState(null);
-  const [description, setDescription] = useState(null);
-  const [picture, setPicture] = useState(null);
+const EditProfile = (props) => {
 
-  const createAccount = async () => {
+    console.log(props.user.user.userName)
+
+  const [user, setUser] = useState(props.user.user.userName);
+  const [pass, setPass] = useState(props.user.user.password);
+  const [Name, setName] = useState(props.user.user.name);
+  const [location, setLocation] = useState(props.user.user.location);
+  const [description, setDescription] = useState(props.user.user.description);
+  const [picture, setPicture] = useState(props.user.user.profilePicture);
+
+  const updateAccount = async () => {
     await supabase
       .from("UserTable")
       .update({
@@ -24,32 +24,34 @@ const { account } = local.state;
         description: description,
         profilePicture: picture,
       })
-      .eq("id", account.id)
+      .eq("id", props.user.user.id)
       .select();
-    window.location = "/";
-  };
+      window.location = "/groups";
+    };
 
   function handleClick() {
-    createAccount();
+    updateAccount();
   }
 
   return (
     <div>
-      <h4> Create New Account</h4>
+      <h4> Edit Profile </h4>
       <br />
       <label>Username:</label>
       <input
         type="text"
         id="user"
         name="user"
+        value={user}
         onChange={(e) => setUser(e.target.value)}
       />
 
       <label>Password:</label>
       <input
-        type="text"
+        type="password"
         id="pass"
         name="pass"
+        value={pass}
         onChange={(e) => setPass(e.target.value)}
       />
 
@@ -58,6 +60,7 @@ const { account } = local.state;
         type="text"
         id="Name"
         name="Name"
+        value={Name}
         onChange={(e) => setName(e.target.value)}
       />
 
@@ -65,6 +68,7 @@ const { account } = local.state;
       <textarea
         id="description"
         name="description"
+        value={description}
         onChange={(e) => setDescription(e.target.value)}
       ></textarea>
 
@@ -73,6 +77,7 @@ const { account } = local.state;
         type="text"
         id="location"
         name="location"
+        value={location}
         onChange={(e) => setLocation(e.target.value)}
       />
 
@@ -81,6 +86,7 @@ const { account } = local.state;
         type="text"
         id="picture"
         name="picture"
+        value={picture}
         onChange={(e) => setPicture(e.target.value)}
       />
 

@@ -1,73 +1,37 @@
-import { supabase } from "../src/client";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const Login = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
 
-  function handleUsernameChange(event) {
-    setUsername(event.target.value);
-  }
-
-  function handlePasswordChange(event) {
-    setPassword(event.target.value);
-  }
-
-  async function getUserByUsernameAndPassword(username, password) {
-    const { data, error } = await supabase
-      .from("UserTable")
-      .select("*")
-      .eq("userName", username)
-      .eq("password", password)
-      .single();
-
-    if (error) {
-      console.error(error);
-      return null;
-    }
-
-    return data;
-  }
-
-  async function handleLogin(event) {
-    event.preventDefault();
-
-    const username = event.target.username.value;
-    const password = event.target.password.value;
-
-    const user = await getUserByUsernameAndPassword(username, password);
-
-    if (user) {
-      // Login successful, do something with the user data
-    } else {
-      // Login failed, show an error message
-    }
-  }
-
-  return (
-    <div>
-      <form onSubmit={handleLogin}>
-        <label>
-          Username:
-          <input type="text" value={username} onChange={handleUsernameChange} />
-        </label>
-        <br />
-        <label>
-          Password:
-          <input
-            type="password"
-            value={password}
-            onChange={handlePasswordChange}
-          />
-        </label>
-        <br />
-        <button type="submit">Log in</button>
-      </form>
-
-      <Link to="/register">Register</Link>
-    </div>
-  );
-};
+const Login = (props) => {
+    const handleLogin = props.handleLogin;
+    const username = props.username;
+    const password = props.password;
+    const handleUsernameChange = props.handleUsernameChange;
+    const handlePasswordChange = props.handlePasswordChange;
+  
+    return (
+      <div>
+        <form onSubmit={handleLogin}>
+          <label>
+            Username:
+            <input type="text" name="user" value={username} onChange={handleUsernameChange} />
+          </label>
+          <br />
+          <label>
+            Password:
+            <input
+              type="password"
+              name="password"
+              value={password}
+              onChange={handlePasswordChange}
+            />
+          </label>
+          <br />
+          <button type="submit">Log in</button>
+        </form>
+  
+        <Link to="/register">Register</Link>
+      </div>
+    );
+  };
 
 export default Login;

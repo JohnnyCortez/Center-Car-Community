@@ -1,12 +1,16 @@
 import { Link } from "react-router-dom"
 
-const SideDisplay = () => {
-    return(
-        <div>
-            <Link to="/login">Login</Link>
+const SideDisplay = (props) => {
 
+    return (
+        <div>
+            <Link to={{
+                pathname: "/login"
+            }}>Login</Link>
+            <br />
+            <Link to="/register">Register</Link>
         </div>
     )
 }
 
-export default SideDisplay
+export default SideDisplay;

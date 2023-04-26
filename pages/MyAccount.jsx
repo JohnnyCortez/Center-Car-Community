@@ -1,5 +1,7 @@
 import { useState } from "react"
 import EditProfile from "./EditProfile"
+import { supabase } from "../src/client";
+
 
 const MyAccount = (props) => {
     console.log(props)
@@ -9,7 +11,14 @@ const MyAccount = (props) => {
         setToggle(!toggle)
     }
 
-    
+    const deletePost = async () => {
+        await supabase.from("UserTable").delete().eq("id", props.user.id);
+        window.location = "/";
+      };
+
+    function handleDelete() {
+        deletePost();
+      }
 
     return(
         <div>
@@ -22,6 +31,7 @@ const MyAccount = (props) => {
                        <h6>{props.user.description}</h6>
                        <h6>{props.user.profilePicture}</h6>
                        <EditProfile user={props}></EditProfile>
+                       <button onClick={handleDelete}>Delete Account</button>
                        </div>
              : ""}
         </div>

@@ -3,8 +3,8 @@ import { useState } from "react";
 
 
 const MakePost = (props) => {
-    console.log(props.user)
-    const [ownerID, setOwnerID] = useState(props.user);
+    const [ownerID, setOwnerID] = useState(props.user.id);
+    const [ownerName, setOwnerName] = useState(props.user.userName)
     const [title, setTitle] = useState(null);
     const [make, setMake] = useState(null);
     const [model, setModel] = useState(null);
@@ -31,7 +31,8 @@ const MakePost = (props) => {
       power : power,
       specs : specs,
       modifications : modifications,
-      picture : picture
+      picture : picture,
+      username : ownerName
     })
     .select();
 };

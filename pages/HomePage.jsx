@@ -4,8 +4,6 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 
-
-
 const Home = (props) => {
     const [posts, setPosts] = useState([]);
     const [toggle, setToggle] = useState(false);
@@ -26,14 +24,17 @@ const Home = (props) => {
             setPosts(data);    
             }
             fetchPost()
-        }, [posts]);
+        }, []);
 
     return(
         <div>
     <div> <h3>Home</h3>
         {posts.length > 0 ? <div className="gallery">{(posts.map((post) => {
-        return (<div className="post">
-           <p>{post.title}</p>
+        return (<div className="post">           
+            <p>{post.title}</p>
+            <img src={"jpeg"}></img>
+            <p>{`Posted by ${post.username}`}</p>
+
 
         </div>
         )

@@ -74,7 +74,7 @@ const App = () => {
 
       <Nav />
       <Routes>
-        <Route index={true} exact path="/home" element={<Home user={id}/>} />
+        <Route index={true} exact path="/home" element={<Home user={data}/>} />
         <Route index={true} exact path="/groups" element={<Groups />} />
         <Route index={true} exact path="/community" element={<Community />} />
         <Route index={true} exact path="/register" element={<Register />} />

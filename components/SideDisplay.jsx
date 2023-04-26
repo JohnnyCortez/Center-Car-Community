@@ -2,7 +2,8 @@
 const SideDisplay = () => {
     return(
         <div>
-            sideDisplay
+            <Link to="/login">Login</Link>
+
         </div>
     )
 }

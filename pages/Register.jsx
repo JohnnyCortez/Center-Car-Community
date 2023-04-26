@@ -11,8 +11,13 @@ const Register = () => {
       .insert({
         userName: user,
         password: pass,
+        name: null,
+        location: null,
+        description: null,
+        profilePicture: null,
       })
       .select();
+      console.log("success")
     window.location = "/";
   };
 
@@ -39,7 +44,7 @@ const Register = () => {
         name="pass"
         onChange={(e) => setPass(e.target.value)}
       />
-      
+
       <button onClick={handleClick}>Submit</button>
       <br />
     </div>

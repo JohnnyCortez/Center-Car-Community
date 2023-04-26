@@ -1,5 +1,6 @@
 import { supabase } from "../src/client";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [username, setUsername] = useState("");

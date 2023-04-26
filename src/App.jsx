@@ -8,14 +8,13 @@ import SideDisplay from '../components/SideDisplay'
 import Register from '../pages/Register'
 import Login from '../pages/LoginPage'
 
-const App = () => {
+const App = (props) => {
   
   return (
     <div className="App">
     <SideDisplay />
     <Nav />
     <Routes>
-        <Route index={true} exact path="/" element={<App />} />
         <Route index={true} exact path="/home" element={<Home />} />
         <Route index={true} exact path="/groups" element={<Groups />} />
         <Route index={true} exact path="/community" element={<Community />} />

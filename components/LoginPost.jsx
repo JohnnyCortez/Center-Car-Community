@@ -1,13 +1,20 @@
 import { useState } from "react";
 import { supabase } from "../src/client";
 import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-
-const Post = () => {
+const LoginPost = () => {
   const location = useLocation();
-  console.log(location)
   const { post } = location.state;
-    console.log(post)
+    console.log(post.id)
+
+
+
+    const deletePost = async () => {
+        await supabase.from("PostTable").delete().eq("id", post.id);
+      };
+
+
   return (
     <div>
       <div>
@@ -22,11 +29,12 @@ const Post = () => {
         <p>{`story ${post.description}`}</p>
         <p>{`specs ${post.specs}`}</p>
         <p>{`modifications ${post.modifications}`}</p>
-
+        <Link to="/editpost" state={{ post }}>Edit Post</Link>
+        <button onClick={deletePost} >Delete Post</button>
 
       </div>
     </div>
   );
 };
 
-export default Post;
+export default LoginPost;

@@ -5,13 +5,8 @@ import { Link } from "react-router-dom";
 
 
 const Home = (props) => {
+    console.log(props)
     const [posts, setPosts] = useState([]);
-    const [toggle, setToggle] = useState(false);
-
-
-    const handleToggle = () => {
-        setToggle(!toggle);
-      };
 
     useEffect(()=> {
         const fetchPost = async () => {
@@ -34,14 +29,14 @@ const Home = (props) => {
             <p>{post.title}</p>
             <img src={"jpeg"}></img>
             <p>{`Posted by ${post.username}`}</p>
+            <Link to="/post" state={{post}}>learn more</Link>
 
 
         </div>
         )
     }))}</div> : ""}
     </div>
-    <button onClick={handleToggle}>Create New Post</button>
-    {toggle ? <MakePost user={props.user}/> : ""}
+    <Link to="/makePost" state={props}>Create New Post</Link>
 
         </div>
     )

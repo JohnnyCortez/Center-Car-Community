@@ -1,10 +1,15 @@
 import { supabase } from "../src/client";
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
+
 
 
 const MakePost = (props) => {
-    const [ownerID, setOwnerID] = useState(props.user.id);
-    const [ownerName, setOwnerName] = useState(props.user.userName)
+    const location = useLocation();
+    const { user } = location.state;
+
+    const [ownerID, setOwnerID] = useState(user.id);
+    const [ownerName, setOwnerName] = useState(user.userName)
     const [title, setTitle] = useState(null);
     const [make, setMake] = useState(null);
     const [model, setModel] = useState(null);
@@ -39,6 +44,7 @@ const MakePost = (props) => {
 
 function handleClick() {
   createPost();
+
 }
 
 return (

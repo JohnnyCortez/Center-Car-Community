@@ -9,7 +9,9 @@ import Register from "../pages/Register";
 import Login from "../pages/LoginPage";
 import MyAccount from "../pages/MyAccount";
 import { supabase } from "../src/client";
-
+import Post from "../components/Post";
+import MakePost from "../components/MakePost";
+import User from "../components/User";
 
 const App = () => {
   const [username, setUsername] = useState("");
@@ -77,7 +79,11 @@ const App = () => {
         <Route index={true} exact path="/home" element={<Home user={data}/>} />
         <Route index={true} exact path="/groups" element={<Groups />} />
         <Route index={true} exact path="/community" element={<Community />} />
-        <Route index={true} exact path="/register" element={<Register />} />
+        <Route index={true} exact path="/post" element={<Post />} />
+        <Route index={true} exact path="/makePost" element={<MakePost />} />
+        <Route index={true} exact path="/user" element={<User />} />
+
+
 
       </Routes>
       

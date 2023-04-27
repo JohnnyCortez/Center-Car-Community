@@ -26,7 +26,7 @@ A previously created post can be deleted from its post page - completed
 
 Here's a walkthrough of implemented features:
 
-<img src='Animation_ProjectTwo.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='Animation_Gif_centerCarCommunity.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with ScreenToGif
 

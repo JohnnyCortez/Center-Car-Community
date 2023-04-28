@@ -1,7 +1,7 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
-import Nav from "../components/nav";
+import Nav from "../components/Nav";
 import Home from "../pages/HomePage";
 import Groups from "../pages/GroupsPage";
 import Community from "../pages/CommunityPage";
